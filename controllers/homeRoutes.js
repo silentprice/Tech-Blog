@@ -41,7 +41,7 @@ router.get('/project/:id', async (req, res) => {
     const project = postData.get({ plain: true });
 
     res.render('project', {
-      ...post,
+      ...project,
       logged_in: req.session.logged_in
     });
   } catch (err) {

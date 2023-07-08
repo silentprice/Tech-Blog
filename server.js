@@ -39,12 +39,14 @@ app.use(express.json());
 
 app.use(session(sess));
 
-// Set up Passport.js for authentication
-app.use(passport.initialize());
-app.use(passport.session());
-
 // Initialize routes
 app.use(routes);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ error: 'Internal Server Error' });
+});
 // Sync Sequelize models and start the server
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
