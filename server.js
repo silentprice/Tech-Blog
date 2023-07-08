@@ -17,7 +17,7 @@ const hbs = exphbs.create({ helpers });
 const sess = {
   secret: 'Super secret secret',
   cookie: {
-    maxAge: 300000,
+    maxAge: 600000,
     httpOnly: true,
     secure: false,
     sameSite: 'strict',
@@ -28,19 +28,26 @@ const sess = {
     db: sequelize
   })
 };
-
-app.use(session(sess));
-
-// Inform Express.js on which template engine to use
+// Set Handlebars as the template engine
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.use(express.json());
+app.use(express.static(path.join(__dirname, 'app/public')));
+// Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
 
+app.use(session(sess));
+
+// Set up Passport.js for authentication
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Initialize routes
 app.use(routes);
-
+// Sync Sequelize models and start the server
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+  });
 });
