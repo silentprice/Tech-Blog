@@ -2,16 +2,19 @@
   {
     "name": "Sal",
     "email": "sal@hotmail.com",
+    "username": "chefSal",
     "password": "password12345"
   },
   {
     "name": "Lernantino",
     "email": "lernantino@gmail.com",
+    "username": "lernan101",
     "password": "password12345"
   },
   {
     "name": "Miko",
     "email": "miko2k20@aol.com",
+    "username": "miko2020",
     "password": "password12345"
   }
 ]
