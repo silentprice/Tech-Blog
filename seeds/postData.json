@@ -1,14 +1,20 @@
 [
   {
-    "title": "Music Near Me",
-    "content": "A mobile app that will send you notifications whenever a concert is playing in your area."
+    "title": "First tech blog post",
+    "content": "A mobile app that will send you notifications when i first create the app!!.",
+    "userId": 1,
+    "date_created": "2021-06-08"
   },
   {
     "title": "The Ultimate Tech Quiz",
-    "content": "A web app that will give users 10 new technical questions each day and track their progress in things like programming, cybersecurity, database architecture, and more!"
+    "content": "A web app that will give users 10 new technical questions each day and track their progress in things like programming, cybersecurity, database architecture, and more!",
+    "userId": 1,
+    "date_created": "2022-09-01"
   },
   {
     "title": "Top 10 movies this month",
-    "content": "List of the top 10 new movies streaming and which service they're streaming on."
+    "content": "List of the top 10 new movies streaming and which service they're streaming on.",
+    "userId": 2,
+    "date_created": "2023-03-03"
   }
 ]
