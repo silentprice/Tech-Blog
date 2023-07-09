@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
@@ -12,6 +12,35 @@ router.post('/', withAuth, async (req, res) => {
     res.status(200).json(newPost);
   } catch (err) {
     res.status(400).json(err);
+  }
+});
+// Add a new comment to a post
+router.post('/:id/comments', withAuth, async (req, res) => {
+  try {
+    const newComment = await Comment.create({
+      content: req.body.content,
+      postId: req.params.id,
+      userId: req.session.user_id,
+    });
+
+    res.status(201).json(newComment);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+// Get comments for a specific post
+router.get('/:id/comments', async (req, res) => {
+  try {
+    const commentsData = await Comment.findAll({
+      where: { postId: req.params.id },
+      include: [{ model: User, attributes: ['name'] }],
+    });
+
+    const comments = commentsData.map((comment) => comment.get({ plain: true }));
+
+    res.json(comments);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 

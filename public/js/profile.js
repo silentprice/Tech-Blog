@@ -31,7 +31,7 @@ const delButtonHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/post');
+      document.location.reload('/post');
     } else {
       alert('Failed to delete post!');
     }
