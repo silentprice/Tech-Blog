@@ -41,11 +41,7 @@ Post.init(
     modelName: 'Post',
   }
 );
-// Add association with Comment model
-Post.hasMany(Comment, {
-  foreignKey: 'postId',
-  onDelete: 'CASCADE',
-});
+
 
 module.exports = Post;
 
