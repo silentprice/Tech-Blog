@@ -6,16 +6,17 @@ router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
       ...req.body,
-      user_id: req.session.user_id,
+      userId: req.session.user_id,
     });
 
     res.status(200).json(newPost);
   } catch (err) {
     res.status(400).json(err);
+    console.log(err)
   }
 });
 // new route to handle the update of a blog post
-router.put('/posts/:id', withAuth, async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   try {
     const updatedPost = await Post.update(
       {
