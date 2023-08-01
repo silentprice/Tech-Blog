@@ -43,17 +43,18 @@ router.put('/:id', withAuth, async (req, res) => {
 });
 
 // Add a new comment to a post
-router.post('/:id/comments', withAuth, async (req, res) => {
+router.post('/comment', withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
       content: req.body.content,
-      postId: req.params.id,
+      postId: req.body.postId,
       userId: req.session.user_id,
     });
 
     res.status(201).json(newComment);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err)
   }
 });
 // Get comments for a specific post
