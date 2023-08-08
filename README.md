@@ -7,3 +7,4 @@
 * https://github.com/silentprice/Tech-Blog 
 
 ## Live URL
+* https://tranquil-peak-68625-13cde1ccacd8.herokuapp.com/ 
